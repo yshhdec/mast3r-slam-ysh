@@ -143,6 +143,9 @@ def run_backend(cfg, model, states, keyframes, K):
 
 
 if __name__ == "__main__":
+    
+    print("git test")
+
     mp.set_start_method("spawn")
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.set_grad_enabled(False)
