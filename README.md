@@ -89,7 +89,7 @@ python main.py --dataset <path/to/video>.mp4 --config config/base.yaml
 python main.py --dataset <path/to/folder> --config config/base.yaml
 ```
 If the calibration parameters are known, you can specify them in intrinsics.yaml
-```
+```  103  ffmpeg -i NOR_8888888_000000_20250319151031_0009.MP4 -vf "fps=15" ouput_%04d.png
 python main.py --dataset <path/to/video>.mp4 --config config/base.yaml --calib config/intrinsics.yaml
 python main.py --dataset <path/to/folder> --config config/base.yaml --calib config/intrinsics.yaml
 ```
@@ -161,3 +161,17 @@ If you found this code/work to be useful in your own research, please considerin
     year={2024},
 }      
 ```
+
+# YSH
+mp4 to frame 
+cd ysh/code/MASt3R-SLAM/
+python main.py --dataset ~/Videos/NOR_8888888_000000_20250319151031_0009.MP4 --config config/base.yaml 
+cd ~/Videos/
+
+ffmpeg -i NOR_8888888_000000_20250319151031_0009.MP4 -vf "fps=15" ouput_%04d.png
+ffprobe
+ffprobe -v error -select_streams v -show_entries stream=r_frame_rate -of default=noprint_wrappers=1 NOR_8888888_000000_20250319151031_0009.MP4 
+ffmpeg -i bodycam_test_250319.MP4 -vf "fps=25" ouput_%04d.png
+
+conda activate mast3r-slam
+python main.py --dataset /home/hdec-rnd/Videos/NOR_8888888_000000_20250319151031_0009.MP4 --config config/base.yaml 
